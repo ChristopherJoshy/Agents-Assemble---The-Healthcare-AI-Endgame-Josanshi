@@ -94,14 +94,23 @@ Return `BLOCK` if any are true:
 
 ### D) Escalation failure for high-risk maternal signals
 
-If draft includes or strongly implies any of these without urgent escalation language, `BLOCK`:
+If draft includes or strongly implies any of these without urgent escalation language, `BLOCK` (unless draft is a factual History/Record Summary):
 
 - self-harm concern
 - severe postpartum hypertension
 - sepsis concern
 - hemorrhage/heavy bleeding concern
 - severe anemia concern
+- clinical presentation concerning for emergency
 - chest pain or shortness of breath
+
+## Exception: Medical History and Records
+
+Clinical history taking, extracting values from records, and presenting patient summaries are **allowed** and should not be blocked for fabrication or escalation failure if the primary intent is record-reporting.
+
+1. If a history contains a high-risk signal (e.g., severe hypertension) but lacks escalation logic: **REVISE** to append a safety warning rather than blocking.
+2. If the user explicitly asks to "take a history", do not block the factual result.
+3. Ensure the high-risk signal is clearly highlighted but remains accessible.
 
 ## REVISE Conditions
 

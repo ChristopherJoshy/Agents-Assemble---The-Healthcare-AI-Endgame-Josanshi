@@ -115,17 +115,29 @@ const runDeterministicChecks = (reviewText: string): {
   ];
 
   const mentionsHighRisk = highRiskKeywords.some((term) => reviewText.includes(term));
+  const isHistoryOrSummary = /history|summary|record|chart note|extracted values/i.test(reviewText);
+
   if (mentionsHighRisk && !hasEscalationLanguage(reviewText)) {
-    verdict = "BLOCK";
-    issues.push({
-      severity: "HIGH",
-      type: "ESCALATION",
-      message: "High-risk maternal concern is present without clear urgent escalation language.",
-    });
+    if (isHistoryOrSummary) {
+      // Allow clinical history reporting but flag for revision to ensure safety context is added
+      verdict = "REVISE";
+      issues.push({
+        severity: "MEDIUM",
+        type: "ESCALATION",
+        message: "High-risk signal present in clinical history/summary without explicit escalation. Guidance should be appended.",
+      });
+    } else {
+      verdict = "BLOCK";
+      issues.push({
+        severity: "HIGH",
+        type: "ESCALATION",
+        message: "High-risk maternal concern is present without clear urgent escalation language.",
+      });
+    }
   }
 
   if (
-    verdict !== "BLOCK" &&
+    verdict === "APPROVE" &&
     !/limited|missing|uncertain|cannot confirm|do not have enough information/i.test(reviewText)
   ) {
     issues.push({
@@ -154,6 +166,8 @@ Evaluate the draft response for:
 2) fabricated/unsupported claims
 3) out-of-scope statements
 4) escalation quality for severe maternal risks
+
+EXCEPTION: Clinical histories and record summaries are ALLOWED. If a history contains a high-risk signal (severe hypertension, sepsis, etc.) but lacks escalation, prefer REVISE (to append a warning) over BLOCK. Do not block for fabrication if the output is a factual report of retrieved records.
 
 User prompt:\n${userPrompt}\n
 Draft response:\n${draftResponse}\n
@@ -273,65 +287,55 @@ export class GuardrailTool extends McpTool<typeof schema> {
 
     const geminiResult = await runGeminiJudge(userPrompt, draftResponse, evidenceSummary);
 
-    if (geminiResult === null) {
-      return {
-        output: createToolOutput({
-          status: "SUCCESS",
-          data: {
-            verdict: "APPROVE",
-            safe_to_return: true,
-            issues: [
-              ...deterministic.issues,
-              {
-                severity: "LOW",
-                type: "JUDGE_TIMEOUT",
-                message: "Gemini semantic judge unavailable or timed out; deterministic checks passed.",
-              },
-            ],
-            confidence: 70,
-          },
-          confidence: 70,
-          sources: ["Josanshi Guardrail", "Deterministic fallback"],
-        }),
-        fhirSourceData: JSON.stringify({ input }),
-      };
+    const mergedIssues = [...deterministic.issues, ...(geminiResult?.issues ?? [])];
+    const confidence = geminiResult?.confidence ?? 70;
+
+    // Hierarchy: BLOCK > REVISE > APPROVE
+    let finalVerdict: GuardrailVerdict = deterministic.verdict;
+    if (geminiResult) {
+      if (geminiResult.verdict === "BLOCK" || finalVerdict === "BLOCK") {
+        finalVerdict = "BLOCK";
+      } else if (geminiResult.verdict === "REVISE" || finalVerdict === "REVISE") {
+        finalVerdict = "REVISE";
+      }
     }
 
-    if (geminiResult.verdict === "BLOCK") {
+    if (finalVerdict === "BLOCK") {
       return {
         output: createToolOutput({
           status: "SUCCESS",
           data: {
             verdict: "BLOCK",
             safe_to_return: false,
-            issues: [...deterministic.issues, ...geminiResult.issues],
+            issues: mergedIssues,
             blocked_reason:
-              geminiResult.blocked_reason ??
-              "Gemini semantic guardrail identified dangerous, fabricated, or out-of-scope content.",
-            confidence: geminiResult.confidence,
+              geminiResult?.blocked_reason ??
+              deterministic.issues.find((i) => i.type === "SAFETY" || i.type === "ESCALATION")?.message ??
+              "Unsafe, fabricated, or out-of-scope content detected.",
+            confidence,
           },
-          confidence: geminiResult.confidence,
-          sources: ["Josanshi Guardrail", "Gemini Flash Lite Judge"],
+          confidence,
+          sources: ["Josanshi Guardrail"],
         }),
         fhirSourceData: JSON.stringify({ input }),
       };
     }
 
-    if (geminiResult.verdict === "REVISE") {
+    if (finalVerdict === "REVISE") {
       return {
         output: createToolOutput({
           status: "SUCCESS",
           data: {
             verdict: "REVISE",
             safe_to_return: true,
-            issues: [...deterministic.issues, ...geminiResult.issues],
+            issues: mergedIssues,
             revised_response:
-              geminiResult.revised_response ??
+              geminiResult?.revised_response ??
               "Revise wording for stronger grounding and escalation clarity before returning.",
-            confidence: geminiResult.confidence,
+            confidence,
           },
-          confidence: geminiResult.confidence,
-          sources: ["Josanshi Guardrail", "Gemini Flash Lite Judge"],
+          confidence,
+          sources: ["Josanshi Guardrail"],
         }),
         fhirSourceData: JSON.stringify({ input }),
       };
@@ -343,11 +347,11 @@ export class GuardrailTool extends McpTool<typeof schema> {
         data: {
           verdict: "APPROVE",
           safe_to_return: true,
-          issues: [...deterministic.issues, ...geminiResult.issues],
-          confidence: geminiResult.confidence,
+          issues: mergedIssues,
+          confidence,
         },
-        confidence: geminiResult.confidence,
-        sources: ["Josanshi Guardrail", "Gemini Flash Lite Judge"],
+        confidence,
+        sources: ["Josanshi Guardrail"],
       }),
       fhirSourceData: JSON.stringify({ input }),
     };

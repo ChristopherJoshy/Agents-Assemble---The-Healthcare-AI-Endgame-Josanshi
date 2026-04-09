@@ -19,6 +19,7 @@ import { GetSystemStatusTool } from "./get-system-status.js";
 import { GuardrailTool } from "./guardrail.js";
 import { PatientIdToNameTool } from "./patient-id-to-name.js";
 import { ScanEquityDisparityFromValuesTool } from "./scan-equity-disparity-from-values.js";
+import { WebSearchTool } from "./web-search.js";
 
 const tools = [
   new GetSystemStatusTool(),
@@ -39,6 +40,7 @@ const tools = [
   new AssessMaternalVaccinePlanFromValuesTool(),
   new AssessMedicationSafetyFromValuesTool(),
   new ScanEquityDisparityFromValuesTool(),
+  new WebSearchTool(),
   new GuardrailTool(),
 ];
 

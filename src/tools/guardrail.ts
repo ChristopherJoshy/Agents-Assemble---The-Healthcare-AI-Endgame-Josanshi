@@ -293,7 +293,7 @@ export class GuardrailTool extends McpTool<typeof schema> {
     // Hierarchy: BLOCK > REVISE > APPROVE
     let finalVerdict: GuardrailVerdict = deterministic.verdict;
     if (geminiResult) {
-      if (geminiResult.verdict === "BLOCK" || finalVerdict === "BLOCK") {
+      if (geminiResult.verdict === "BLOCK") {
         finalVerdict = "BLOCK";
       } else if (geminiResult.verdict === "REVISE" || finalVerdict === "REVISE") {
         finalVerdict = "REVISE";

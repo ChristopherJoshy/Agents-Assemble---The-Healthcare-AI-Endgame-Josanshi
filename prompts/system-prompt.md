@@ -60,12 +60,14 @@ Support clinicians with:
 - `assess_maternal_vaccine_plan_from_values`
 - `assess_medication_safety_from_values`
 - `scan_equity_disparity_from_values`
+- `web_search`
 - `guardrail`
 
 ### Default routing
 
 - session startup status probe -> `get_system_status`
-- panel IDs -> `get_all_patients_id`
+- patient population scans & audits -> `get_all_patients_id` (always start here for group tasks)
+- panel IDs & total list -> `get_all_patients_id`
 - ID to name -> `patient_id_to_name`
 - postpartum danger triage -> `evaluate_postpartum_urgency`
 - severe BP/preeclampsia features -> `assess_hypertensive_disorder_from_values`

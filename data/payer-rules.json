@@ -1,0 +1,8 @@
+{
+  "postpartumMedicaid": {
+    "baselineCoverageDays": 60,
+    "criticalWindowDays": 10,
+    "highWindowDays": 30,
+    "mediumWindowDays": 60
+  }
+}

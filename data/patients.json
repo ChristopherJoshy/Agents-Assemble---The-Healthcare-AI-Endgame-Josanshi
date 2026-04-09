@@ -1,0 +1,226 @@
+[
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "maria-santos",
+          "name": [{ "given": ["Maria"], "family": "Santos" }],
+          "birthDate": "1991-05-14",
+          "gender": "female",
+          "address": [{ "text": "101 Main St", "city": "Los Angeles", "state": "CA", "postalCode": "90012" }],
+          "telecom": [{ "system": "phone", "value": "555-1001" }],
+          "identifier": [{ "type": { "coding": [{ "code": "MR" }] }, "value": "JS-MARIA-001" }],
+          "extension": [
+            { "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Hispanic" }] },
+            { "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-ethnicity", "extension": [{ "url": "text", "valueString": "Hispanic or Latino" }] }
+          ]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-maria", "status": "active", "beneficiary": { "reference": "Patient/maria-santos" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-maria-pre", "subject": { "reference": "Patient/maria-santos" }, "code": { "coding": [{ "code": "O14.9" }], "text": "Preeclampsia risk" }, "recordedDate": "2026-04-01T09:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-maria-sbp1", "subject": { "reference": "Patient/maria-santos" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8480-6" }], "text": "Systolic BP" }, "valueQuantity": { "value": 138, "unit": "mmHg" }, "effectiveDateTime": "2026-04-01T09:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-maria-sbp2", "subject": { "reference": "Patient/maria-santos" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8480-6" }], "text": "Systolic BP" }, "valueQuantity": { "value": 146, "unit": "mmHg" }, "effectiveDateTime": "2026-04-05T09:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-maria-sbp3", "subject": { "reference": "Patient/maria-santos" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8480-6" }], "text": "Systolic BP" }, "valueQuantity": { "value": 154, "unit": "mmHg" }, "effectiveDateTime": "2026-04-08T09:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-maria-dbp3", "subject": { "reference": "Patient/maria-santos" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8462-4" }], "text": "Diastolic BP" }, "valueQuantity": { "value": 98, "unit": "mmHg" }, "effectiveDateTime": "2026-04-08T09:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-maria-protein", "subject": { "reference": "Patient/maria-santos" }, "code": { "coding": [{ "code": "5804-0" }], "text": "Protein urine" }, "valueString": "1+", "effectiveDateTime": "2026-04-08T09:00:00Z" } },
+      { "resource": { "resourceType": "ServiceRequest", "id": "sr-maria-mfm", "subject": { "reference": "Patient/maria-santos" }, "authoredOn": "2026-04-08T12:00:00Z", "code": { "text": "MFM referral" } } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "keisha-washington",
+          "name": [{ "given": ["Keisha"], "family": "Washington" }],
+          "birthDate": "1997-06-09",
+          "gender": "female",
+          "address": [{ "text": "202 Main St", "city": "Atlanta", "state": "GA", "postalCode": "30303" }],
+          "telecom": [{ "system": "phone", "value": "555-1002" }],
+          "extension": [
+            { "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Black or African American" }] }
+          ]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-keisha", "status": "active", "beneficiary": { "reference": "Patient/keisha-washington" }, "period": { "end": "2026-04-17" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-keisha-delivery", "subject": { "reference": "Patient/keisha-washington" }, "code": { "coding": [{ "code": "O80" }], "text": "Normal delivery" }, "recordedDate": "2026-02-17T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "aisha-johnson",
+          "name": [{ "given": ["Aisha"], "family": "Johnson" }],
+          "birthDate": "1994-01-22",
+          "gender": "female",
+          "address": [{ "text": "303 Main St", "city": "Chicago", "state": "IL", "postalCode": "60601" }],
+          "telecom": [{ "system": "phone", "value": "555-1003" }],
+          "extension": [
+            { "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Black or African American" }] }
+          ]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-aisha", "status": "active", "beneficiary": { "reference": "Patient/aisha-johnson" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-aisha-gdm", "subject": { "reference": "Patient/aisha-johnson" }, "code": { "coding": [{ "code": "O24.4" }], "text": "Gestational diabetes" }, "recordedDate": "2026-03-20T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "rosa-martinez",
+          "name": [{ "given": ["Rosa"], "family": "Martinez" }],
+          "birthDate": "2001-09-10",
+          "gender": "female",
+          "address": [{ "text": "404 Main St", "city": "Fresno", "state": "CA", "postalCode": "93721" }],
+          "telecom": [{ "system": "phone", "value": "555-1004" }],
+          "extension": [
+            { "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Hispanic" }] }
+          ]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-rosa", "status": "active", "beneficiary": { "reference": "Patient/rosa-martinez" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-rosa-delivery", "subject": { "reference": "Patient/rosa-martinez" }, "code": { "coding": [{ "code": "O80" }], "text": "Normal delivery" }, "recordedDate": "2026-03-26T10:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-rosa-epds", "subject": { "reference": "Patient/rosa-martinez" }, "code": { "coding": [{ "code": "71354-5" }], "text": "Edinburgh Postnatal Depression Scale" }, "valueInteger": 15, "component": [{ "code": { "coding": [{ "code": "44261-6" }] }, "valueInteger": 0 }], "effectiveDateTime": "2026-04-08T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "emily-chen",
+          "name": [{ "given": ["Emily"], "family": "Chen" }],
+          "birthDate": "1989-07-04",
+          "gender": "female",
+          "address": [{ "text": "505 Main St", "city": "Seattle", "state": "WA", "postalCode": "98101" }],
+          "telecom": [{ "system": "phone", "value": "555-1005" }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Asian" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-emily", "status": "active", "beneficiary": { "reference": "Patient/emily-chen" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-emily-gbs", "subject": { "reference": "Patient/emily-chen" }, "code": { "coding": [{ "code": "B95.1" }], "text": "GBS positive" }, "recordedDate": "2026-04-01T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "priya-patel",
+          "name": [{ "given": ["Priya"], "family": "Patel" }],
+          "birthDate": "1996-11-11",
+          "gender": "female",
+          "address": [{ "text": "606 Main St", "city": "Jersey City", "state": "NJ", "postalCode": "07302" }],
+          "telecom": [{ "system": "phone", "value": "555-1006" }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Asian" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-priya", "status": "active", "beneficiary": { "reference": "Patient/priya-patel" }, "period": { "end": "2026-12-31" } } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "deshawn-williams-porter",
+          "name": [{ "given": ["DeShawn"], "family": "Williams-Porter" }],
+          "birthDate": "1998-03-15",
+          "gender": "female",
+          "address": [{ "text": "707 Main St", "city": "Baton Rouge", "state": "LA", "postalCode": "70802" }],
+          "telecom": [{ "system": "phone", "value": "555-1007" }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Black or African American" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-deshawn", "status": "active", "beneficiary": { "reference": "Patient/deshawn-williams-porter" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-deshawn-pprom", "subject": { "reference": "Patient/deshawn-williams-porter" }, "code": { "coding": [{ "code": "O42.9" }], "text": "PPROM" }, "recordedDate": "2026-04-06T10:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-deshawn-temp", "subject": { "reference": "Patient/deshawn-williams-porter" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8310-5" }], "text": "Temperature" }, "valueQuantity": { "value": 38.4, "unit": "C" }, "effectiveDateTime": "2026-04-08T10:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-deshawn-hr", "subject": { "reference": "Patient/deshawn-williams-porter" }, "category": [{ "coding": [{ "code": "vital-signs" }] }], "code": { "coding": [{ "code": "8867-4" }], "text": "Heart rate" }, "valueQuantity": { "value": 116, "unit": "/min" }, "effectiveDateTime": "2026-04-08T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "jennifer-adams",
+          "name": [{ "given": ["Jennifer"], "family": "Adams" }],
+          "birthDate": "1984-04-17",
+          "gender": "female",
+          "address": [{ "text": "808 Main St", "city": "Boston", "state": "MA", "postalCode": "02108" }],
+          "telecom": [{ "system": "phone", "value": "555-1008" }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "White" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-jennifer", "status": "active", "beneficiary": { "reference": "Patient/jennifer-adams" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-jennifer-pre", "subject": { "reference": "Patient/jennifer-adams" }, "code": { "coding": [{ "code": "O14.9" }], "text": "Prior preeclampsia" }, "recordedDate": "2026-03-20T10:00:00Z" } },
+      { "resource": { "resourceType": "Condition", "id": "cond-jennifer-twin", "subject": { "reference": "Patient/jennifer-adams" }, "code": { "coding": [{ "code": "O30.0" }], "text": "Twin gestation" }, "recordedDate": "2026-03-20T10:00:00Z" } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "sofia-rodriguez",
+          "name": [{ "given": ["Sofia"], "family": "Rodriguez" }],
+          "birthDate": "2006-08-12",
+          "gender": "female",
+          "address": [{ "text": "909 Main St", "city": "Phoenix", "state": "AZ", "postalCode": "85004" }],
+          "telecom": [{ "system": "phone", "value": "555-1009" }],
+          "communication": [{ "language": { "text": "Spanish" } }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "Hispanic" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-sofia", "status": "active", "beneficiary": { "reference": "Patient/sofia-rodriguez" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Encounter", "id": "enc-sofia-missed1", "subject": { "reference": "Patient/sofia-rodriguez" }, "status": "cancelled", "class": { "code": "AMB" }, "period": { "start": "2026-03-12T10:00:00Z" }, "type": [{ "text": "Prenatal visit missed" }] } },
+      { "resource": { "resourceType": "Encounter", "id": "enc-sofia-missed2", "subject": { "reference": "Patient/sofia-rodriguez" }, "status": "cancelled", "class": { "code": "AMB" }, "period": { "start": "2026-03-26T10:00:00Z" }, "type": [{ "text": "Prenatal visit missed" }] } }
+    ]
+  },
+  {
+    "resourceType": "Bundle",
+    "type": "collection",
+    "entry": [
+      {
+        "resource": {
+          "resourceType": "Patient",
+          "id": "lisa-thompson",
+          "name": [{ "given": ["Lisa"], "family": "Thompson" }],
+          "birthDate": "1992-12-01",
+          "gender": "female",
+          "address": [{ "text": "1001 Main St", "city": "Portland", "state": "OR", "postalCode": "97204" }],
+          "telecom": [{ "system": "phone", "value": "555-1010" }],
+          "extension": [{ "url": "http://hl7.org/fhir/us/core/StructureDefinition/us-core-race", "extension": [{ "url": "text", "valueString": "White" }] }]
+        }
+      },
+      { "resource": { "resourceType": "Coverage", "id": "cov-lisa", "status": "active", "beneficiary": { "reference": "Patient/lisa-thompson" }, "period": { "end": "2026-12-31" } } },
+      { "resource": { "resourceType": "Condition", "id": "cond-lisa-delivery", "subject": { "reference": "Patient/lisa-thompson" }, "code": { "coding": [{ "code": "O80" }], "text": "Normal delivery" }, "recordedDate": "2026-01-09T10:00:00Z" } },
+      { "resource": { "resourceType": "Observation", "id": "obs-lisa-epds", "subject": { "reference": "Patient/lisa-thompson" }, "code": { "coding": [{ "code": "71354-5" }], "text": "Edinburgh Postnatal Depression Scale" }, "valueInteger": 2, "component": [{ "code": { "coding": [{ "code": "44261-6" }] }, "valueInteger": 0 }], "effectiveDateTime": "2026-02-01T10:00:00Z" } },
+      { "resource": { "resourceType": "Encounter", "id": "enc-lisa-pp", "subject": { "reference": "Patient/lisa-thompson" }, "status": "finished", "class": { "code": "AMB" }, "period": { "start": "2026-01-25T10:00:00Z" }, "type": [{ "text": "Postpartum follow-up" }] } },
+      { "resource": { "resourceType": "CarePlan", "id": "cp-lisa-contraception", "subject": { "reference": "Patient/lisa-thompson" }, "status": "active", "title": "Contraception counseling completed" } }
+    ]
+  }
+]

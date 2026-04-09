@@ -1,0 +1,61 @@
+{
+  "postpartumRisk": {
+    "hemorrhage": {
+      "source": "ACOG obstetric hemorrhage guidance",
+      "highRiskTriggers": ["prior postpartum hemorrhage", "placental abnormality", "hemoglobin < 10 g/dL"]
+    },
+    "cardiovascular": {
+      "source": "ACOG postpartum hypertension and cardiovascular follow-up guidance",
+      "tiering": {
+        "critical": "Severe-range BP or major cardiovascular diagnosis",
+        "high": "Persistent postpartum hypertension or hypertensive disorder history"
+      }
+    }
+  },
+  "depression": {
+    "source": "ACOG perinatal mental health screening guidance",
+    "epdsThresholds": {
+      "moderate": 10,
+      "severe": 15
+    },
+    "phq9Thresholds": {
+      "moderate": 10,
+      "severe": 20
+    }
+  },
+  "pph": {
+    "source": "CMQCC obstetric hemorrhage risk framework",
+    "weights": {
+      "priorPph": 3,
+      "cSection": 2,
+      "placentalAbnormality": 4,
+      "chorioamnionitis": 2,
+      "anemia": 2,
+      "multipleGestation": 2,
+      "magnesiumExposure": 1,
+      "polyhydramnios": 1
+    }
+  },
+  "cardiac": {
+    "source": "ACOG PB 222 cardiovascular disease in pregnancy",
+    "tiers": {
+      "Tier 1": "Routine postpartum care",
+      "Tier 2": "Specialist follow-up or closer postpartum surveillance",
+      "Tier 3": "Urgent cardiology or hospital-level escalation"
+    }
+  },
+  "anemia": {
+    "source": "ACOG anemia guidance",
+    "patterns": {
+      "IRON_DEFICIENCY_PATTERN": "Low hemoglobin with microcytosis and low ferritin",
+      "NORMOCYTIC_PATTERN": "Low hemoglobin with normal MCV",
+      "MACROCYTIC_PATTERN": "Low hemoglobin with elevated MCV"
+    }
+  },
+  "vaccines": {
+    "source": "CDC ACIP maternal immunization guidance",
+    "tdap": "During each pregnancy, preferably weeks 27-36; postpartum catch-up if missed during pregnancy",
+    "influenza": "During pregnancy or postpartum when in season",
+    "covid": "Follow the current CDC updated schedule"
+  }
+}

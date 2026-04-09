@@ -1,0 +1,74 @@
+{
+  "pph": {
+    "risk_factors": {
+      "prior_pph": { "score": 3, "level": "HIGH" },
+      "c_section": { "score": 2, "level": "MODERATE" },
+      "placental_issues": { "score": 4, "level": "HIGH" },
+      "chorioamnionitis": { "score": 2, "level": "MODERATE" },
+      "anemia_hgb_lt_10": { "score": 2, "level": "MODERATE" },
+      "multiple_gestation": { "score": 2, "level": "MODERATE" },
+      "magnesium_exposure": { "score": 1, "level": "LOW" },
+      "prolonged_labor": { "score": 1, "level": "LOW" },
+      "polyhydramnios": { "score": 1, "level": "LOW" }
+    },
+    "bundles": {
+      "LOW": {
+        "score_range": [0, 1],
+        "actions": ["AMTSL", "TXA 1g IV"],
+        "citations": ["ACOG PB 183"]
+      },
+      "MODERATE": {
+        "score_range": [2, 3],
+        "actions": ["AMTSL", "TXA 1g IV", "IV access (18G)", "Type & Screen"],
+        "citations": ["ACOG PB 183", "CMQCC PPH Toolkit"]
+      },
+      "HIGH": {
+        "score_range": [4, 100],
+        "actions": ["AMTSL", "TXA 1g IV", "Massive Transfusion Protocol Activation", "Notify MFM", "ICU Bed Preparation"],
+        "citations": ["ACOG PB 183", "CMQCC PPH Toolkit"]
+      }
+    }
+  },
+  "cardiac": {
+    "tiers": {
+      "Tier 1": {
+        "description": "No cardiovascular disease, uncomplicated pregnancy",
+        "monitoring": "Routine postpartum care",
+        "red_flags": ["New onset dyspnea", "Severe chest pain"]
+      },
+      "Tier 2": {
+        "description": "Mild/moderate cardiovascular disease",
+        "monitoring": "Cardiology co-managed monitoring every 1-2 weeks",
+        "red_flags": ["B-type natriuretic peptide (BNP) elevation", "Oxygen saturation < 95%"]
+      },
+      "Tier 3": {
+        "description": "Significant cardiovascular disease requiring specialist co-management",
+        "monitoring": "Intensive care or telemetry monitoring",
+        "red_flags": ["Any clinical worsening", "Arrhythmias"]
+      }
+    },
+    "citations": ["ACOG Practice Bulletin 222"]
+  },
+  "depression": {
+    "epds": {
+      "0-8": "Routine care",
+      "9-12": "Rescreen in 2-4 weeks",
+      "13+": "Clinical evaluation required"
+    },
+    "phq9": {
+      "0-4": "Minimal",
+      "5-9": "Mild",
+      "10-14": "Moderate",
+      "15-19": "Moderately severe",
+      "20+": "Severe"
+    },
+    "citations": ["ACOG clinical guidance on perinatal mental health screening and follow-up"]
+  },
+  "vaccines": {
+    "tdap": { "timing": "During each pregnancy, preferably in the early part of weeks 27-36; if missed, vaccinate postpartum as maternal catch-up", "breastfeeding": "Safe" },
+    "covid": { "timing": "Per current CDC schedule", "breastfeeding": "Safe" },
+    "rsv": { "timing": "Maternal RSV vaccination is used during pregnancy, typically 32-36 weeks in the seasonal window; it is not a routine postpartum vaccine", "breastfeeding": "Safe" },
+    "flu": { "timing": "If in flu season (Oct-Mar)", "breastfeeding": "Safe" },
+    "mmr": { "timing": "Before discharge if non-immune", "breastfeeding": "Safe", "contraindications": ["Immunocompromised"] }
+  }
+}

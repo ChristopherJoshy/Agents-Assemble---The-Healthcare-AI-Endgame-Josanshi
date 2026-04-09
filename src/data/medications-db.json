@@ -1,0 +1,31 @@
+{
+  "drug_safety": {
+    "A": { "FDA_Pregnancy_Category": "A", "Description": "Adequate studies show no risk to the fetus in the first trimester", "Safety_Level": "LOW" },
+    "B": { "FDA_Pregnancy_Category": "B", "Description": "Animal studies show no risk, or animal studies show risk but human studies do not", "Safety_Level": "LOW" },
+    "C": { "FDA_Pregnancy_Category": "C", "Description": "Animal studies show risk or no studies available. Benefit may outweigh risk", "Safety_Level": "MODERATE" },
+    "D": { "FDA_Pregnancy_Category": "D", "Description": "Evidence of human fetal risk. Benefit may outweigh risk in life-threatening situations", "Safety_Level": "HIGH" },
+    "X": { "FDA_Pregnancy_Category": "X", "Description": "Proven fetal risk. Contraindicated in pregnancy", "Safety_Level": "CRITICAL" }
+  },
+  "lactation": {
+    "L1": { "Risk_Level": "Safest", "Description": "Drug has been taken by a large number of breastfeeding mothers without any observed increase in adverse effects in the infant" },
+    "L2": { "Risk_Level": "Safer", "Description": "Drug has been studied in a limited number of breastfeeding mothers without adverse effects in the infant" },
+    "L3": { "Risk_Level": "Moderately Safe", "Description": "No controlled studies in breastfeeding women; however, the risk of untoward effects to a breastfed infant is possible" },
+    "L4": { "Risk_Level": "Possibly Hazardous", "Description": "Positive evidence of risk to a breastfed infant or breast milk production" },
+    "L5": { "Risk_Level": "Contraindicated", "Description": "Significant risk to the infant, or the drug has a high potential for causing serious damage" }
+  },
+  "meds": {
+    "Warfarin": { "preg": "X", "lact": "L2", "notes": "Anticoagulant. Avoid in pregnancy except mechanical heart valves." },
+    "Lisinopril": { "preg": "X", "lact": "L2", "notes": "ACE inhibitor. Linked to fetal renal failure." },
+    "Magnesium Sulfate": { "preg": "A", "lact": "L1", "notes": "Used for preeclampsia prevention. Monitor reflexes." },
+    "Oxytocin": { "preg": "A", "lact": "L1", "notes": "Uterotonic for PPH prevention." },
+    "Methylergonovine": { "preg": "C", "lact": "L2", "notes": "Uterotonic. Contraindicated in hypertension." },
+    "Carboprost": { "preg": "C", "lact": "L2", "notes": "Uterotonic. Contraindicated in asthma." },
+    "Misoprostol": { "preg": "C", "lact": "L1", "notes": "Uterotonic, also for labor induction." },
+    "Tranexamic Acid": { "preg": "B", "lact": "L1", "notes": "Antifibrinolytic for PPH management." }
+  },
+  "contraindications": [
+    { "drug": "Methylergonovine", "condition": "Hypertension", "severity": "HIGH" },
+    { "drug": "Carboprost", "condition": "Asthma", "severity": "HIGH" },
+    { "drug": "NSAIDs", "condition": "Preeclampsia with severe features", "severity": "MODERATE" }
+  ]
+}

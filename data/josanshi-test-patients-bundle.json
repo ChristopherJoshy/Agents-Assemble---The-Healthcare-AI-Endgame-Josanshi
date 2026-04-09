@@ -1,0 +1,545 @@
+{
+  "resourceType": "Bundle",
+  "type": "transaction",
+  "entry": [
+    {
+      "fullUrl": "urn:uuid:patient-maya-thompson",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "b370cb12-b4a3-4a29-8ad3-724b53c2a266",
+        "name": [
+          {
+            "family": "Thompson",
+            "given": ["Maya"]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1993-04-17",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "maya.thompson.demo@example.com"
+          },
+          {
+            "system": "phone",
+            "value": "555-0101"
+          }
+        ],
+        "address": [
+          {
+            "line": ["101 Cedar St"],
+            "city": "Seattle",
+            "state": "WA",
+            "postalCode": "98101"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-maya-preeclampsia",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-maya-preeclampsia",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "clinicalStatus": {
+          "coding": [{ "code": "active" }]
+        },
+        "verificationStatus": {
+          "coding": [{ "code": "confirmed" }]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "O14.9",
+              "display": "Preeclampsia, unspecified"
+            }
+          ],
+          "text": "Preeclampsia with severe features"
+        },
+        "recordedDate": "2026-04-01T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/condition-maya-preeclampsia"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:coverage-maya",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "coverage-maya",
+        "status": "active",
+        "beneficiary": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "period": {
+          "start": "2026-04-01",
+          "end": "2026-05-31"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Coverage/coverage-maya"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-maya-sbp-1",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-maya-sbp-1",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure" }],
+          "text": "Systolic blood pressure"
+        },
+        "valueQuantity": { "value": 154, "unit": "mmHg" },
+        "effectiveDateTime": "2026-04-07T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-maya-sbp-1"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-maya-sbp-2",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-maya-sbp-2",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure" }],
+          "text": "Systolic blood pressure"
+        },
+        "valueQuantity": { "value": 162, "unit": "mmHg" },
+        "effectiveDateTime": "2026-04-08T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-maya-sbp-2"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-maya-sbp-3",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-maya-sbp-3",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure" }],
+          "text": "Systolic blood pressure"
+        },
+        "valueQuantity": { "value": 168, "unit": "mmHg" },
+        "effectiveDateTime": "2026-04-09T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-maya-sbp-3"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-maya-dbp",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-maya-dbp",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "category": [{ "coding": [{ "code": "vital-signs" }] }],
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure" }],
+          "text": "Diastolic blood pressure"
+        },
+        "valueQuantity": { "value": 110, "unit": "mmHg" },
+        "effectiveDateTime": "2026-04-09T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-maya-dbp"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:medication-maya-labetalol",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medication-maya-labetalol",
+        "status": "active",
+        "subject": {
+          "reference": "Patient/b370cb12-b4a3-4a29-8ad3-724b53c2a266"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Labetalol 200 mg twice daily"
+        },
+        "authoredOn": "2026-04-08"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationRequest/medication-maya-labetalol"
+      }
+    },
+
+    {
+      "fullUrl": "urn:uuid:patient-elena-martinez",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "5a412a60-c0e7-41f3-9e18-be8046e1df21",
+        "name": [
+          {
+            "family": "Martinez",
+            "given": ["Elena"]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1998-09-03",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "elena.martinez.demo@example.com"
+          },
+          {
+            "system": "phone",
+            "value": "555-0102"
+          }
+        ],
+        "address": [
+          {
+            "line": ["202 Maple Ave"],
+            "city": "Fresno",
+            "state": "CA",
+            "postalCode": "93721"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-elena-delivery",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-elena-delivery",
+        "subject": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "clinicalStatus": {
+          "coding": [{ "code": "active" }]
+        },
+        "verificationStatus": {
+          "coding": [{ "code": "confirmed" }]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "O80",
+              "display": "Normal delivery"
+            }
+          ],
+          "text": "Recent vaginal delivery"
+        },
+        "recordedDate": "2026-02-25T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/condition-elena-delivery"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-elena-epds",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-elena-epds",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "71354-5", "display": "Edinburgh Postnatal Depression Scale" }],
+          "text": "Edinburgh Postnatal Depression Scale"
+        },
+        "valueInteger": 15,
+        "component": [
+          {
+            "code": {
+              "coding": [{ "code": "44261-6", "display": "Thoughts of self-harm" }]
+            },
+            "valueInteger": 0
+          }
+        ],
+        "effectiveDateTime": "2026-04-08T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-elena-epds"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-elena-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-elena-hgb",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin" }],
+          "text": "Hemoglobin"
+        },
+        "valueQuantity": { "value": 8.7, "unit": "g/dL" },
+        "effectiveDateTime": "2026-04-08T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-elena-hgb"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-elena-hct",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-elena-hct",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "4544-3", "display": "Hematocrit" }],
+          "text": "Hematocrit"
+        },
+        "valueQuantity": { "value": 27, "unit": "%" },
+        "effectiveDateTime": "2026-04-08T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-elena-hct"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:coverage-elena",
+      "resource": {
+        "resourceType": "Coverage",
+        "id": "coverage-elena",
+        "status": "active",
+        "beneficiary": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "period": {
+          "start": "2026-02-25",
+          "end": "2026-05-10"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Coverage/coverage-elena"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:allergy-elena-penicillin",
+      "resource": {
+        "resourceType": "AllergyIntolerance",
+        "id": "allergy-elena-penicillin",
+        "patient": {
+          "reference": "Patient/5a412a60-c0e7-41f3-9e18-be8046e1df21"
+        },
+        "clinicalStatus": {
+          "coding": [{ "code": "active" }]
+        },
+        "verificationStatus": {
+          "coding": [{ "code": "confirmed" }]
+        },
+        "code": {
+          "text": "Penicillin allergy"
+        }
+      },
+      "request": {
+        "method": "PUT",
+        "url": "AllergyIntolerance/allergy-elena-penicillin"
+      }
+    },
+
+    {
+      "fullUrl": "urn:uuid:patient-aisha-reynolds",
+      "resource": {
+        "resourceType": "Patient",
+        "id": "791faf79-94d7-44ce-86b6-affa54c77265",
+        "name": [
+          {
+            "family": "Reynolds",
+            "given": ["Aisha"]
+          }
+        ],
+        "gender": "female",
+        "birthDate": "1989-12-11",
+        "telecom": [
+          {
+            "system": "email",
+            "value": "aisha.reynolds.demo@example.com"
+          },
+          {
+            "system": "phone",
+            "value": "555-0103"
+          }
+        ],
+        "address": [
+          {
+            "line": ["303 Willow Dr"],
+            "city": "Jersey City",
+            "state": "NJ",
+            "postalCode": "07302"
+          }
+        ]
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-aisha-gdm",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-aisha-gdm",
+        "subject": {
+          "reference": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+        },
+        "clinicalStatus": {
+          "coding": [{ "code": "active" }]
+        },
+        "verificationStatus": {
+          "coding": [{ "code": "confirmed" }]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "O24.4",
+              "display": "Gestational diabetes mellitus"
+            }
+          ],
+          "text": "Gestational diabetes mellitus"
+        },
+        "recordedDate": "2026-03-20T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/condition-aisha-gdm"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:condition-aisha-prior-pph",
+      "resource": {
+        "resourceType": "Condition",
+        "id": "condition-aisha-prior-pph",
+        "subject": {
+          "reference": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+        },
+        "clinicalStatus": {
+          "coding": [{ "code": "active" }]
+        },
+        "verificationStatus": {
+          "coding": [{ "code": "confirmed" }]
+        },
+        "code": {
+          "coding": [
+            {
+              "system": "http://hl7.org/fhir/sid/icd-10-cm",
+              "code": "O72",
+              "display": "Postpartum hemorrhage"
+            }
+          ],
+          "text": "History of postpartum hemorrhage"
+        },
+        "recordedDate": "2026-03-20T09:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Condition/condition-aisha-prior-pph"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-aisha-hgb",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-aisha-hgb",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+        },
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin" }],
+          "text": "Hemoglobin"
+        },
+        "valueQuantity": { "value": 10.1, "unit": "g/dL" },
+        "effectiveDateTime": "2026-04-08T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-aisha-hgb"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:observation-aisha-bmi",
+      "resource": {
+        "resourceType": "Observation",
+        "id": "observation-aisha-bmi",
+        "status": "final",
+        "subject": {
+          "reference": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+        },
+        "code": {
+          "coding": [{ "system": "http://loinc.org", "code": "39156-5", "display": "Body mass index" }],
+          "text": "Body mass index"
+        },
+        "valueQuantity": { "value": 35, "unit": "kg/m2" },
+        "effectiveDateTime": "2026-04-08T10:00:00Z"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "Observation/observation-aisha-bmi"
+      }
+    },
+    {
+      "fullUrl": "urn:uuid:medication-aisha-insulin",
+      "resource": {
+        "resourceType": "MedicationRequest",
+        "id": "medication-aisha-insulin",
+        "status": "active",
+        "subject": {
+          "reference": "Patient/791faf79-94d7-44ce-86b6-affa54c77265"
+        },
+        "intent": "order",
+        "medicationCodeableConcept": {
+          "text": "Insulin glargine at bedtime"
+        },
+        "authoredOn": "2026-04-01"
+      },
+      "request": {
+        "method": "PUT",
+        "url": "MedicationRequest/medication-aisha-insulin"
+      }
+    }
+  ]
+}

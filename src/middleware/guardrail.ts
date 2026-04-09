@@ -18,6 +18,8 @@ type GeminiApiResponse = {
   }>;
 };
 
+const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-3.1-flash-lite-preview";
+
 export type GuardrailResult = {
   verdict: "VERIFIED" | "MODIFIED" | "BLOCKED";
   output: ToolOutput;
@@ -224,7 +226,7 @@ Respond with ONLY valid JSON:
 
   try {
     const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-lite:generateContent?key=${process.env.GEMINI_API_KEY}`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

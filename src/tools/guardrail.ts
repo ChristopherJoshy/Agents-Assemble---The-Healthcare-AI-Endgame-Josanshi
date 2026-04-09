@@ -44,7 +44,7 @@ type GeminiResponse = {
   }>;
 };
 
-const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-2.0-flash-lite";
+const GEMINI_MODEL = process.env.GEMINI_MODEL ?? "gemini-3.1-flash-lite-preview";
 
 const hasEscalationLanguage = (text: string): boolean =>
   /urgent|immediate|emergency|same-day|escalat|call 911|ed now|seek emergency care/i.test(text);
